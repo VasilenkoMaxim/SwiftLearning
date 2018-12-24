@@ -1,0 +1,18 @@
+// Exercise 3
+// Write a Swift program that accept two integer values and 
+// return true if one of them is 20 or if their sum is 20.
+
+func IsTwenty(a: Int, b: Int) -> Bool{
+    if a == 20 || b == 20 || a + b == 20 {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+print(IsTwenty(a: 20, b: 20))
+print(IsTwenty(a: 10, b: 20))
+print(IsTwenty(a: 20, b: 10))
+print(IsTwenty(a: 10, b: 10))
+print(IsTwenty(a: 11, b: 10))

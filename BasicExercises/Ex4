@@ -1,0 +1,18 @@
+// Exercise 4
+// Write a Swift program to accept two integer values and return true if one is negative and one is positive. 
+// Return true only if both are negative.
+
+func IsPosAndNeg(a: Int, b: Int) -> Bool{
+    if ( a < 0 && b < 0 ) || (a > 0 && b < 0) || (a < 0 && b > 0) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+print(IsPosAndNeg(a: 0, b: 0))
+print(IsPosAndNeg(a: -1, b: 1))
+print(IsPosAndNeg(a: 1, b: 1))
+print(IsPosAndNeg(a: -1, b: -1))
+print(IsPosAndNeg(a: 1, b: -1))

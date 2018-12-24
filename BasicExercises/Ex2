@@ -4,7 +4,7 @@
 
 func DoubleAbsDiff(n: Int) -> Int{
     let valueOfDiff = 51    
-    var result = n > valueOfDiff ? (n - valueOfDiff) * 2 : abs(n - valueOfDiff)
+    var result = n > valueOfDiff ? (n - valueOfDiff) * 2 : valueOfDiff - n
 	return result
 }
 

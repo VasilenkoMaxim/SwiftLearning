@@ -1,0 +1,17 @@
+// Exercise 5
+// Write a Swift program to add "Is" to the front of a given string.
+// However, if the string already begins with "Is", return the given string.
+
+func addIs(str: String) -> String{
+    let strIs = "Is"
+ // if str.prefix(strIs.count) == strIs {
+ 	if str.starts(with: strIs) {	
+        return str
+    }
+    else {
+        return strIs + " " + str
+    }
+}
+
+print(addIs(str: "Is boy"))
+print(addIs(str: "boy"))
