@@ -1,0 +1,12 @@
+// Exercise 2
+// Write a Swift program to compute and return the absolute difference of n and 51, 
+// if n is over 51 return double the absolute difference
+
+func DoubleAbsDiff(n: Int) -> Int{
+    let valueOfDiff = 51    
+    var result = n > valueOfDiff ? (n - valueOfDiff) * 2 : abs(n - valueOfDiff)
+	return result
+}
+
+print(DoubleAbsDiff(n: 10))
+print(DoubleAbsDiff(n: 60))
