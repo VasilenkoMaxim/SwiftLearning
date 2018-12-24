@@ -1,0 +1,24 @@
+// Exercises 1
+// Write a Swift program to compute the sum of the two integers. 
+// If the values are equal return the triple their sum.
+
+//Init of int variables
+var firstInt = 100
+var secondInt = 101
+//Define of result variable
+var resultInt: Int
+
+/*
+//first algorithm
+if firstInt == secondInt {
+    resultInt = (firstInt + secondInt) * 3
+}
+else{
+    resultInt = firstInt + secondInt
+}
+*/
+
+//second algorithm
+resultInt = firstInt == secondInt ? (firstInt + secondInt) * 3 : firstInt + secondInt
+
+print(resultInt)
