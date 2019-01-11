@@ -28,9 +28,12 @@ struct Chessmen {
     }
 }
 
-var whiteBishop = Chessmen(chessFigure: .bishop, color: .white)
-whiteBishop.setCoordinates(char: "a", num: 1)
-print(whiteBishop.position)
-whiteBishop.kill()
-print(whiteBishop.position)
+//var whiteBishop = Chessmen(chessFigure: .bishop, color: .white)
+//whiteBishop.setCoordinates(char: "a", num: 1)
+//print(whiteBishop.position)
+//whiteBishop.kill()
+//print(whiteBishop.position)
 
+for i in Array(0..<8).reversed() {
+    print(i)
+}

@@ -9,8 +9,8 @@ arr1
 var arr4: [Int] = []
 arr4.randomElement()
 var numbers = [5, 6, 7, 8, 9, 10, 11]
-numbers.removeAll(where: { $0 == 1 })
-numbers
+numbers.removeAll(where: { $0 == 6 })
+numbers.reverse()
 /*
 var arr4 = 1..<4
 

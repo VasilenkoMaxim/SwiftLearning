@@ -11,9 +11,7 @@ import Foundation
 struct Constants {
     static let horizontalSize: UInt = 10
     static let verticalSize: UInt = 15
-    static let x0: Int = 0
-    static let y0: Int = 0
-    static let z0: Int = 0
+    static let startPoint: Point = Point(x: 0, y: 0, z: 0)
     static let orcaPercent: Double = 5.0
     static let tuxPercent: Double = 50.0
     static let stepsToReproduceTux: UInt = 3

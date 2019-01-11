@@ -13,77 +13,69 @@ class DiscreteWorld2D: DiscreteWorld {
     var heigth: UInt
     var depth: UInt = 1
     var length: UInt
-    var x0: Int
-    var y0: Int
-    var z0: Int
-    init(horizontalSize: UInt, verticalSize: UInt, referencePoint: ( x0: Int, y0: Int, z0: Int)) {
+    var startPoint: Point
+        
+    init(horizontalSize: UInt, verticalSize: UInt, startPoint: Point) {
         self.width = horizontalSize
         self.heigth = verticalSize
         self.length = horizontalSize * verticalSize
-        self.x0 = referencePoint.x0
-        self.y0 = referencePoint.y0
-        self.z0 = referencePoint.z0
+        self.startPoint = startPoint
     }
-    func getCoordinates( index: UInt) -> ( x: Int, y: Int, z: Int) {
-        let indexNew: UInt = conversIndex(index: index)
-        let x: Int = Int(indexNew) % Int(self.width)
-        let y: Int = Int(indexNew) / Int(self.width)
-        let z: Int = 0
-        return ( x, y, z)
+    
+    func getCoordinate( index: UInt) -> Point {
+        let indexNew: UInt = self.conversIndex(index: index)
+        let point = Point(x: Int(indexNew) % Int(self.width),
+                          y: Int(indexNew) / Int(self.width),
+                          z: 0)
+        return point
     }
-    func getIndex( x: Int, y: Int, z: Int) -> UInt {
-        let xNew: Int = conversCoordinate(coordinate: x, typeCoordinate: .x)
-        let yNew: Int = conversCoordinate(coordinate: y, typeCoordinate: .y)
-        let zNew: Int = conversCoordinate(coordinate: z, typeCoordinate: .z)
-        return UInt(Int(self.width * self.heigth)*zNew + Int(self.width)*yNew + xNew)
+    	
+    func getIndex( point: Point) -> UInt {
+        let newPoint = self.conversCoordinate( point: point)
+        return UInt(Int(self.width * self.heigth)*newPoint.z + Int(self.width)*newPoint.y + newPoint.x)
     }
+    
     func conversIndex(index: UInt) -> UInt {
-        if index >= self.length {
-            return index % self.length
-        } else {
-            return index
-        }
+        return index % self.length
     }
-    func conversCoordinate(coordinate: Int, typeCoordinate: Coordinates) -> Int {
-        switch typeCoordinate {
-        case .x:
-            if coordinate - self.x0 >= Int(self.width) {
-                return self.x0 + (coordinate - self.x0) % Int(self.width)
-            } else if coordinate < self.x0 {
-                return self.x0 + coordinate % Int(self.width) == 0 ? 0 : Int(self.width) + coordinate % Int(self.width)
-            } else {
-                return coordinate
-            }
-        case .y:
-            if coordinate - self.y0 >= Int(self.heigth) {
-                return self.y0 + (coordinate - self.y0) % Int(self.heigth)
-            } else if coordinate < self.y0 {
-                return self.y0 + coordinate % Int(self.heigth) == 0 ? 0 : Int(self.heigth) + coordinate % Int(self.heigth)
-            } else {
-                return coordinate
-            }
-        case .z:
-            if coordinate - self.z0 >= Int(self.depth) {
-                return self.z0 + (coordinate - self.z0) % Int(self.depth)
-            } else if coordinate < self.z0 {
-                return self.z0 + coordinate % Int(self.depth) == 0 ? 0 : Int(self.depth) + coordinate % Int(self.depth)
-            } else {
-                return coordinate
-            }
+    
+    func conversCoordinate(point: Point) -> Point {
+        var conversPoint = Point( x: 0, y: 0, z: 0)
+        if point.x - self.startPoint.x >= Int(self.width) {
+            conversPoint.x = self.startPoint.x + (point.x - self.startPoint.x) % Int(self.width)
+        } else if point.x < self.startPoint.x {
+            conversPoint.x = (self.startPoint.x + Int(self.width) - 1) - (self.startPoint.x - point.x - 1) % Int(self.width)
+        } else {
+            conversPoint.x = point.x
         }
+        if point.y - self.startPoint.y >= Int(self.heigth) {
+            conversPoint.y = self.startPoint.y + (point.y - self.startPoint.y) % Int(self.heigth)
+        } else if point.y < self.startPoint.y {
+            conversPoint.y = (self.startPoint.y + Int(self.heigth) - 1) - (self.startPoint.y - point.y - 1) % Int(self.heigth)
+        }else{
+            conversPoint.y = point.y
+        }
+        if point.z - self.startPoint.z >= Int(self.depth) {
+            conversPoint.z = self.startPoint.z + (point.z - self.startPoint.z) % Int(self.depth)
+        } else if point.z < self.startPoint.z {
+            conversPoint.z = (self.startPoint.z + Int(self.depth) - 1) - (self.startPoint.z - point.z - 1) % Int(self.depth)
+        }else{
+            conversPoint.z = point.z
+        }
+        return conversPoint
     }
     func getFirstNeighbours(index: UInt) -> [UInt] {
-        let firstNeighbours: [(x: Int, y: Int, z: Int)] = [(x: -1, y: -1, z: 0),
-                                                           (x: -1, y:  0, z: 0),
-                                                           (x: -1, y:  1, z: 0),
-                                                           (x:  0, y: -1, z: 0),
-                                                           (x:  0, y:  1, z: 0),
-                                                           (x:  1, y: -1, z: 0),
-                                                           (x:  1, y:  0, z: 0),
-                                                           (x:  1, y:  1, z: 0)]
-        let coordinate = self.getCoordinates(index: index)
+        let firstNeighbours: [Point] = [Point(x: -1, y: -1, z: 0),
+                                        Point(x: -1, y:  0, z: 0),
+                                        Point(x: -1, y:  1, z: 0),
+                                        Point(x:  0, y: -1, z: 0),
+                                        Point(x:  0, y:  1, z: 0),
+                                        Point(x:  1, y: -1, z: 0),
+                                        Point(x:  1, y:  0, z: 0),
+                                        Point(x:  1, y:  1, z: 0)]
+        let coordinate = self.getCoordinate(index: index)
         var indexes: [UInt] = []
-        firstNeighbours.forEach { firstNeighbour in indexes.append(self.getIndex(x: coordinate.x + firstNeighbour.x, y: coordinate.y + firstNeighbour.y, z: coordinate.z + firstNeighbour.z))}
+        firstNeighbours.forEach { firstNeighbour in indexes.append(self.getIndex( point: coordinate + firstNeighbour)) }
         return indexes
     }
 }

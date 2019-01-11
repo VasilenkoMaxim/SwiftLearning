@@ -8,10 +8,13 @@
 
 import Foundation
 
-enum Coordinates {
-    case x
-    case y
-    case z
+struct Point {
+    var x: Int
+    var y: Int
+    var z: Int
+    static func +( first: Point, second: Point) -> Point {
+        return Point( x: first.x + second.x, y: first.y + second.y, z: first.z + second.z)
+    }
 }
 
 protocol DiscreteWorld {
@@ -19,12 +22,10 @@ protocol DiscreteWorld {
     var heigth: UInt { get }
     var depth: UInt { get }
     var length: UInt { get }
-    var x0: Int { get }
-    var y0: Int { get }
-    var z0: Int { get }
-    func getCoordinates( index: UInt ) -> ( x: Int, y: Int, z: Int)
-    func getIndex( x: Int, y: Int, z: Int ) -> UInt
+    var startPoint: Point { get }
+    func getCoordinate( index: UInt ) -> Point
+    func getIndex( point: Point ) -> UInt
     func conversIndex( index: UInt) -> UInt
-    func conversCoordinate ( coordinate: Int, typeCoordinate: Coordinates) -> Int
-    func getFirstNeighbours(index: UInt) -> [UInt]
+    func conversCoordinate( point: Point ) -> Point
+    func getFirstNeighbours( index: UInt) -> [UInt]
 }

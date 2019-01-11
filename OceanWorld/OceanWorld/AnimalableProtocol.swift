@@ -10,6 +10,8 @@ import Foundation
 
 protocol Animalable {
     var stepsToReproduce: UInt { get }
+    var myCountSteps: UInt { get set }
+    var name: String? { get }
     func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt]
     func move(myWorld: OceanWorld, myIndex: UInt) -> [UInt]
     func death(myWorld: OceanWorld, myIndex: UInt) -> [UInt]

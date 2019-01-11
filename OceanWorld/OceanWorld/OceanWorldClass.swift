@@ -13,10 +13,12 @@ class OceanWorld: DiscreteWorld2D {
     var animalsArray: Array<Animalable?>
     var time: UInt = 1 // one time - one round
     var roundQueue: [UInt] = []
-    override init(horizontalSize: UInt, verticalSize: UInt, referencePoint: (x0: Int, y0: Int, z0: Int)) {
+    
+    override init(horizontalSize: UInt, verticalSize: UInt, startPoint: Point) {
         self.animalsArray = Array(repeating: Animalable?.none, count: Int(horizontalSize * verticalSize))
-        super.init(horizontalSize: horizontalSize, verticalSize: verticalSize, referencePoint: referencePoint)
+        super.init(horizontalSize: horizontalSize, verticalSize: verticalSize, startPoint: startPoint)
     }
+    
     func initAnimals( orcaPercent: Double, tuxPercent: Double) {
         let orcaCount = Int ( Double(self.length) * orcaPercent / 100.0)
         let tuxCount = Int ( Double(self.length) * tuxPercent / 100.0)
@@ -27,11 +29,15 @@ class OceanWorld: DiscreteWorld2D {
         self.animalsArray.replaceSubrange(orcaCount..<orcaCount+tuxCount, with: tuxArray)
         self.animalsArray.replaceSubrange(orcaCount+tuxCount..<Int(self.length), with: emptySiteArray)
         self.animalsArray.shuffle()
-        for i in 0...self.animalsArray.count-1 { if self.animalsArray[i] != nil { self.roundQueue.append(UInt(i)) }}
+        self.roundQueue = []
+        for i in 0..<self.animalsArray.count { if self.animalsArray[i] != nil { self.roundQueue.append(UInt(i)) }}
     }
+    
+    
+    
     func stepInRound() -> [UInt] {
         if self.roundQueue.isEmpty {
-            for i in 0...self.animalsArray.count-1 { if self.animalsArray[i] != nil { self.roundQueue.append(UInt(i)) }}
+            for i in 0..<self.animalsArray.count { if self.animalsArray[i] != nil { self.roundQueue.append(UInt(i)) }}
             self.time += 1
             if self.roundQueue.isEmpty {
                 return []
@@ -41,8 +47,10 @@ class OceanWorld: DiscreteWorld2D {
         if changedIndexes.isEmpty {
             self.roundQueue.remove(at: 0)
         } else {
+            self.roundQueue.remove(at: 0)
             changedIndexes.forEach { arrayElement in self.roundQueue.removeAll(where: { $0 == arrayElement } ) }
         }
         return changedIndexes
     }
+    
 }

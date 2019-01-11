@@ -9,13 +9,15 @@
 import Foundation
 
 class Tux: Animalable {
+    var name: String? = "tux"
     let stepsToReproduce = Constants.stepsToReproduceTux
-    
+    var myCountSteps: UInt = 0
     init() {
     }
     
     func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
-        if myWorld.time % self.stepsToReproduce == 0 {
+        self.myCountSteps += 1
+        if self.myCountSteps % self.stepsToReproduce == 0 {
             return self.reproduce(myWorld: myWorld, myIndex: myIndex)
         }
         else {

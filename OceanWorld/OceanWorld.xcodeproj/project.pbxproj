@@ -19,7 +19,20 @@
 		6D2CCC5321D39D8700D942EA /* TuxClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CCC5221D39D8700D942EA /* TuxClass.swift */; };
 		6D2CCC5521D4BD2B00D942EA /* DiscreteWorldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CCC5421D4BD2B00D942EA /* DiscreteWorldProtocol.swift */; };
 		6D2CCC5721D4BD7300D942EA /* DiscreteWorld2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CCC5621D4BD7300D942EA /* DiscreteWorld2D.swift */; };
+		6DE4F87C21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F87B21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift */; };
+		6DE4F88421E8ABDC0012A0D0 /* OceanWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */; };
+		6DE4F88C21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DE4F88621E8ABDC0012A0D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D2CCC2D21D3480F00D942EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D2CCC3421D3480F00D942EA;
+			remoteInfo = OceanWorld;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6D2CCC3521D3480F00D942EA /* OceanWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,10 +49,22 @@
 		6D2CCC5221D39D8700D942EA /* TuxClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuxClass.swift; sourceTree = "<group>"; };
 		6D2CCC5421D4BD2B00D942EA /* DiscreteWorldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteWorldProtocol.swift; sourceTree = "<group>"; };
 		6D2CCC5621D4BD7300D942EA /* DiscreteWorld2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteWorld2D.swift; sourceTree = "<group>"; };
+		6DE4F87B21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
+		6DE4F88121E8ABDC0012A0D0 /* OceanWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanWorldTests.swift; sourceTree = "<group>"; };
+		6DE4F88521E8ABDC0012A0D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteWorld2DTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6D2CCC3221D3480F00D942EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE4F87E21E8ABDC0012A0D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				6D2CCC3721D3480F00D942EA /* OceanWorld */,
+				6DE4F88221E8ABDC0012A0D0 /* OceanWorldTests */,
 				6D2CCC3621D3480F00D942EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6D2CCC3521D3480F00D942EA /* OceanWorld.app */,
+				6DE4F88121E8ABDC0012A0D0 /* OceanWorldTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +98,7 @@
 				6D2CCC3821D3480F00D942EA /* AppDelegate.swift */,
 				6D2CCC3A21D3480F00D942EA /* ViewController.swift */,
 				6D2CCC3C21D3480F00D942EA /* Main.storyboard */,
+				6DE4F87B21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift */,
 				6D2CCC3F21D3482900D942EA /* Assets.xcassets */,
 				6D2CCC4121D3482900D942EA /* LaunchScreen.storyboard */,
 				6D2CCC4421D3482900D942EA /* Info.plist */,
@@ -83,6 +111,16 @@
 				6D2CCC5621D4BD7300D942EA /* DiscreteWorld2D.swift */,
 			);
 			path = OceanWorld;
+			sourceTree = "<group>";
+		};
+		6DE4F88221E8ABDC0012A0D0 /* OceanWorldTests */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */,
+				6DE4F88521E8ABDC0012A0D0 /* Info.plist */,
+				6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */,
+			);
+			path = OceanWorldTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +143,24 @@
 			productReference = 6D2CCC3521D3480F00D942EA /* OceanWorld.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6DE4F88021E8ABDC0012A0D0 /* OceanWorldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DE4F88821E8ABDC0012A0D0 /* Build configuration list for PBXNativeTarget "OceanWorldTests" */;
+			buildPhases = (
+				6DE4F87D21E8ABDC0012A0D0 /* Sources */,
+				6DE4F87E21E8ABDC0012A0D0 /* Frameworks */,
+				6DE4F87F21E8ABDC0012A0D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DE4F88721E8ABDC0012A0D0 /* PBXTargetDependency */,
+			);
+			name = OceanWorldTests;
+			productName = OceanWorldTests;
+			productReference = 6DE4F88121E8ABDC0012A0D0 /* OceanWorldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -117,6 +173,10 @@
 				TargetAttributes = {
 					6D2CCC3421D3480F00D942EA = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					6DE4F88021E8ABDC0012A0D0 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 6D2CCC3421D3480F00D942EA;
 					};
 				};
 			};
@@ -134,6 +194,7 @@
 			projectRoot = "";
 			targets = (
 				6D2CCC3421D3480F00D942EA /* OceanWorld */,
+				6DE4F88021E8ABDC0012A0D0 /* OceanWorldTests */,
 			);
 		};
 /* End PBXProject section */
@@ -146,6 +207,13 @@
 				6D2CCC4321D3482900D942EA /* LaunchScreen.storyboard in Resources */,
 				6D2CCC4021D3482900D942EA /* Assets.xcassets in Resources */,
 				6D2CCC3E21D3480F00D942EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE4F87F21E8ABDC0012A0D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,13 +230,31 @@
 				6D2CCC5321D39D8700D942EA /* TuxClass.swift in Sources */,
 				6D2CCC3921D3480F00D942EA /* AppDelegate.swift in Sources */,
 				6D2CCC4F21D34D5900D942EA /* OrcaClass.swift in Sources */,
+				6DE4F87C21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift in Sources */,
 				6D2CCC5721D4BD7300D942EA /* DiscreteWorld2D.swift in Sources */,
 				6D2CCC4D21D34C9900D942EA /* Constants.swift in Sources */,
 				6D2CCC5121D3507000D942EA /* OceanWorldClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6DE4F87D21E8ABDC0012A0D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DE4F88421E8ABDC0012A0D0 /* OceanWorldTests.swift in Sources */,
+				6DE4F88C21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DE4F88721E8ABDC0012A0D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D2CCC3421D3480F00D942EA /* OceanWorld */;
+			targetProxy = 6DE4F88621E8ABDC0012A0D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D2CCC3C21D3480F00D942EA /* Main.storyboard */ = {
@@ -342,6 +428,44 @@
 			};
 			name = Release;
 		};
+		6DE4F88921E8ABDC0012A0D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = OceanWorldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sibext.OceanWorldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OceanWorld.app/OceanWorld";
+			};
+			name = Debug;
+		};
+		6DE4F88A21E8ABDC0012A0D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = OceanWorldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sibext.OceanWorldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OceanWorld.app/OceanWorld";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -359,6 +483,15 @@
 			buildConfigurations = (
 				6D2CCC4821D3482900D942EA /* Debug */,
 				6D2CCC4921D3482900D942EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DE4F88821E8ABDC0012A0D0 /* Build configuration list for PBXNativeTarget "OceanWorldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DE4F88921E8ABDC0012A0D0 /* Debug */,
+				6DE4F88A21E8ABDC0012A0D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

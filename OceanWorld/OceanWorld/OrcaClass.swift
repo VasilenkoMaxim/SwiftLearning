@@ -9,19 +9,25 @@
 import Foundation
 
 class Orca: Animalable {
-    let stepsToReproduce = Constants.stepsToReproduceOrca
-    var stepsToDeathNoEat = Constants.stepsToDeathOrcaNoEat
+    var name: String? = "orca"
+    let stepsToReproduce: UInt = Constants.stepsToReproduceOrca
+    var stepsToDeathNoEat: UInt = Constants.stepsToDeathOrcaNoEat
+    var myCountSteps: UInt = 0
+    
     init() {
     }
+    
     func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
+        self.myCountSteps += 1
         self.stepsToDeathNoEat -= 1
-        if myWorld.time % self.stepsToReproduce == 0 {
+        if self.myCountSteps % self.stepsToReproduce == 0 {
             return self.reproduce(myWorld: myWorld, myIndex: myIndex)
         }
         else {
             return self.move(myWorld: myWorld, myIndex: myIndex)
         }
     }
+    
     func move( myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
         var neighbours = myWorld.getFirstNeighbours(index: myIndex)
         var neighboursTux: [UInt] = []
@@ -61,6 +67,7 @@ class Orca: Animalable {
             }
         }
     }
+    
     func reproduce(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
         var neighbours = myWorld.getFirstNeighbours(index: myIndex)
         for i in 1...8 {
@@ -87,6 +94,7 @@ class Orca: Animalable {
             }
         }
     }
+    
     func death(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
         myWorld.animalsArray[Int(myIndex)] = nil
         return [myIndex]
