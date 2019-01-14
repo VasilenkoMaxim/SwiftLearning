@@ -21,7 +21,7 @@
 		6D2CCC5721D4BD7300D942EA /* DiscreteWorld2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CCC5621D4BD7300D942EA /* DiscreteWorld2D.swift */; };
 		6DE4F87C21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F87B21E85F8F0012A0D0 /* AnimalCollectionViewCell.swift */; };
 		6DE4F88421E8ABDC0012A0D0 /* OceanWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */; };
-		6DE4F88C21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */; };
+		6DE4F89021EC5A360012A0D0 /* Unit_DiscreteWorld2DTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4F88F21EC5A360012A0D0 /* Unit_DiscreteWorld2DTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 		6DE4F88121E8ABDC0012A0D0 /* OceanWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanWorldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanWorldTests.swift; sourceTree = "<group>"; };
 		6DE4F88521E8ABDC0012A0D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreteWorld2DTest.swift; sourceTree = "<group>"; };
+		6DE4F88F21EC5A360012A0D0 /* Unit_DiscreteWorld2DTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_DiscreteWorld2DTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +106,9 @@
 				6D2CCC4C21D34C9900D942EA /* Constants.swift */,
 				6D2CCC5221D39D8700D942EA /* TuxClass.swift */,
 				6D2CCC4E21D34D5900D942EA /* OrcaClass.swift */,
-				6D2CCC5021D3507000D942EA /* OceanWorldClass.swift */,
 				6D2CCC5421D4BD2B00D942EA /* DiscreteWorldProtocol.swift */,
 				6D2CCC5621D4BD7300D942EA /* DiscreteWorld2D.swift */,
+				6D2CCC5021D3507000D942EA /* OceanWorldClass.swift */,
 			);
 			path = OceanWorld;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			children = (
 				6DE4F88321E8ABDC0012A0D0 /* OceanWorldTests.swift */,
 				6DE4F88521E8ABDC0012A0D0 /* Info.plist */,
-				6DE4F88B21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift */,
+				6DE4F88F21EC5A360012A0D0 /* Unit_DiscreteWorld2DTest.swift */,
 			);
 			path = OceanWorldTests;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE4F88421E8ABDC0012A0D0 /* OceanWorldTests.swift in Sources */,
-				6DE4F88C21E8AD2C0012A0D0 /* DiscreteWorld2DTest.swift in Sources */,
+				6DE4F89021EC5A360012A0D0 /* Unit_DiscreteWorld2DTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

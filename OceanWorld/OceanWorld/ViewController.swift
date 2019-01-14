@@ -18,12 +18,10 @@ struct viewConst {
     static let rauseIdentifierAnimalCell = "animalCell"
 }
 
-
 class ViewController: UIViewController {
     
     let myWorld = OceanWorld(horizontalSize: Constants.horizontalSize, verticalSize: Constants.verticalSize, startPoint: Constants.startPoint)
     var myWorldDataSource: [String?] = []
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -31,23 +29,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.myWorld.initAnimals(orcaPercent: Constants.orcaPercent, tuxPercent: Constants.tuxPercent)
         self.myWorld.animalsArray.forEach { animal in self.myWorldDataSource.append(animal?.name) }
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
-    
     @IBAction func stepInRound(_ sender: Any) {
-        let changedIndex = self.myWorld.stepInRound()
-        if changedIndex.isEmpty {
-            print(changedIndex)
-            return
-        }else{
+        /*
+        repeat {
+           let _ = self.myWorld.stepInRound()
+        } while !self.myWorld.roundQueue.isEmpty
+        self.myWorldDataSource = []
+        self.myWorld.animalsArray.forEach { animal in self.myWorldDataSource.append(animal?.name) }
+        self.collectionView.reloadData()
+        */
+        if let changedIndex = self.myWorld.stepInRound() {
             var indexPath: [IndexPath] = []
             changedIndex.forEach { index in self.myWorldDataSource[Int(index)] = self.myWorld.animalsArray[Int(index)]?.name}
             changedIndex.forEach { index in indexPath.append(IndexPath(item: Int(index), section: 0))}
             self.collectionView.reloadItems(at: indexPath)
+            print(changedIndex)
+            return
         }
-        print(changedIndex)
+        print("Do not site for step")
     }
     
     @IBAction func restart(_ sender: Any) {
@@ -57,35 +60,9 @@ class ViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    @IBAction func touchButtonIn(_ sender: Any) {
-        
-        /*
-        let indexFrom = Array(0..<12).randomElement() ?? 0
-        let indexTo = Array(0..<12).randomElement() ?? 0
-        if indexFrom != indexTo {
-            let tempStr = collectionData[indexTo]
-            collectionData[indexTo] = collectionData[indexFrom]
-            collectionData[indexFrom] = tempStr
-            collectionView.reloadItems(at: [IndexPath(item: indexFrom, section: 0), IndexPath(item: indexTo, section: 0)])
-        }
-        */
-    }
-    
-    
-    @IBAction func touchButtonOut(_ sender: Any) {
-        
-    }
-    
     override open var shouldAutorotate: Bool {
         return false
     }
-    
-    /*
-    let alertController = UIAlertController(title: "Hello", message: "You press in button START", preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    self.present(alertController, animated: true, completion: nil)
-    */
     
 }
 
@@ -102,7 +79,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return viewConst.minSpacingForLine
+        return viewConst.minSpacingForCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -122,7 +99,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
         return itemCell
     }
-    
     
 }
 

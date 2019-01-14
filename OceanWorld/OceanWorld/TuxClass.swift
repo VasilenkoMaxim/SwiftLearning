@@ -15,7 +15,7 @@ class Tux: Animalable {
     init() {
     }
     
-    func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
+    func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
         self.myCountSteps += 1
         if self.myCountSteps % self.stepsToReproduce == 0 {
             return self.reproduce(myWorld: myWorld, myIndex: myIndex)
@@ -25,40 +25,42 @@ class Tux: Animalable {
         }
     }
     
-    func move( myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
-        var neighbours = myWorld.getFirstNeighbours(index: myIndex)
-        for i in 1...8 {
-            if myWorld.animalsArray[Int(neighbours[8-i])] != nil {
-                neighbours.remove(at: 8-i)
+    func move( myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
+        var neighbours: [UInt] = myWorld.getFirstNeighbours(index: myIndex) ?? []
+        if !neighbours.isEmpty {
+            for i in Array(0..<neighbours.count).reversed() {
+                if myWorld.animalsArray[Int(neighbours[i])] != nil {
+                    neighbours.remove(at: i)
+                }
             }
+        } else {
+            return nil
         }
-        let newIndex: UInt = neighbours.randomElement() ?? myIndex
-        if newIndex == myIndex {
-            return []
-        }
-        else
-        {
+        if let newIndex: UInt = neighbours.randomElement() {
             myWorld.animalsArray[Int(newIndex)] = self
             myWorld.animalsArray[Int(myIndex)] = nil
             return [ myIndex, newIndex]
+        } else {
+            return nil
         }
     }
     
-    func reproduce(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
-        var neighbours = myWorld.getFirstNeighbours(index: myIndex)
-        for i in 1...8 {
-            if myWorld.animalsArray[Int(neighbours[8-i])] != nil {
-                neighbours.remove(at: 8-i)
+    func reproduce(myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
+        var neighbours: [UInt] = myWorld.getFirstNeighbours(index: myIndex) ?? []
+        if !neighbours.isEmpty {
+            for i in Array(0..<neighbours.count).reversed() {
+                if myWorld.animalsArray[Int(neighbours[i])] != nil {
+                    neighbours.remove(at: i)
+                }
             }
+        } else {
+            return nil
         }
-        let newIndex: UInt = neighbours.randomElement() ?? myIndex
-        if newIndex == myIndex {
-            return []
-        }
-        else
-        {
+        if let newIndex: UInt = neighbours.randomElement() {
             myWorld.animalsArray[Int(newIndex)] = Tux()
             return [newIndex]
+        } else {
+            return nil
         }
     }
     

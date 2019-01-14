@@ -37,3 +37,5 @@ struct Chessmen {
 for i in Array(0..<8).reversed() {
     print(i)
 }
+var a = [1, 2, 3, 1, 3]
+var b = Array(Set(a))

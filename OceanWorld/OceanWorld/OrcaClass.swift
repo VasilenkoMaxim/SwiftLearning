@@ -17,7 +17,7 @@ class Orca: Animalable {
     init() {
     }
     
-    func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
+    func doSomething(myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
         self.myCountSteps += 1
         self.stepsToDeathNoEat -= 1
         if self.myCountSteps % self.stepsToReproduce == 0 {
@@ -28,69 +28,65 @@ class Orca: Animalable {
         }
     }
     
-    func move( myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
-        var neighbours = myWorld.getFirstNeighbours(index: myIndex)
+    func move( myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
+        var neighbours: [UInt] = myWorld.getFirstNeighbours(index: myIndex) ?? []
         var neighboursTux: [UInt] = []
         var neighboursEmptySite: [UInt] = []
-        for i in 1...8 {
-            if myWorld.animalsArray[Int(neighbours[8-i])] is Tux {
-                neighboursTux.append(neighbours[8-i])
+        if !neighbours.isEmpty {
+            for i in Array(0..<neighbours.count) {
+                if myWorld.animalsArray[Int(neighbours[i])] is Tux {
+                    neighboursTux.append(neighbours[i])
+                }
+                if myWorld.animalsArray[Int(neighbours[i])] == nil {
+                    neighboursEmptySite.append(neighbours[i])
+                }
             }
-            if myWorld.animalsArray[Int(neighbours[8-i])] == nil {
-                neighboursEmptySite.append(neighbours[8-i])
-            }
+        } else {
+            return nil
         }
-        let newIndex: UInt = neighboursTux.randomElement() ?? (neighboursEmptySite.randomElement() ?? myIndex)
-        
-        if newIndex == myIndex {
-            if self.stepsToDeathNoEat == 0 {
-                return self.death(myWorld: myWorld, myIndex: myIndex)
-            } else {
-                return []
-            }
-        }
-        else
-        {
+        if let newIndex: UInt = neighboursTux.randomElement() ?? neighboursEmptySite.randomElement() {
             if myWorld.animalsArray[Int(newIndex)] is Tux {
                 self.stepsToDeathNoEat = Constants.stepsToDeathOrcaNoEat
-                myWorld.animalsArray[Int(newIndex)] = self
-                myWorld.animalsArray[Int(myIndex)] = nil
-                return [ myIndex, newIndex]
             } else {
                 if self.stepsToDeathNoEat == 0 {
                     return self.death(myWorld: myWorld, myIndex: myIndex)
-                } else {
-                    myWorld.animalsArray[Int(newIndex)] = self
-                    myWorld.animalsArray[Int(myIndex)] = nil
-                    return [ myIndex, newIndex]
                 }
+            }
+            myWorld.animalsArray[Int(newIndex)] = self
+            myWorld.animalsArray[Int(myIndex)] = nil
+            return [ myIndex, newIndex]
+        } else {
+            if self.stepsToDeathNoEat == 0 {
+                return self.death(myWorld: myWorld, myIndex: myIndex)
+            } else {
+                return nil
             }
         }
     }
     
-    func reproduce(myWorld: OceanWorld, myIndex: UInt) -> [UInt] {
-        var neighbours = myWorld.getFirstNeighbours(index: myIndex)
-        for i in 1...8 {
-            if myWorld.animalsArray[Int(neighbours[8-i])] != nil {
-                neighbours.remove(at: 8-i)
+    func reproduce(myWorld: OceanWorld, myIndex: UInt) -> [UInt]? {
+        var neighbours: [UInt] = myWorld.getFirstNeighbours(index: myIndex) ?? []
+        if !neighbours.isEmpty {
+            for i in Array(0..<neighbours.count).reversed() {
+                if myWorld.animalsArray[Int(neighbours[i])] != nil {
+                    neighbours.remove(at: i)
+                }
             }
+        } else {
+            return nil
         }
-        let newIndex: UInt = neighbours.randomElement() ?? myIndex
-        if newIndex == myIndex {
+        if let newIndex: UInt = neighbours.randomElement() {
+            myWorld.animalsArray[Int(newIndex)] = Orca()
+            if self.stepsToDeathNoEat == 0 {
+                return  self.death(myWorld: myWorld, myIndex: myIndex) + [newIndex]
+            } else {
+                return [newIndex]
+            }
+        } else {
             if self.stepsToDeathNoEat == 0 {
                 return self.death(myWorld: myWorld, myIndex: myIndex)
             } else {
-                return []
-            }
-        }
-        else
-        {
-            myWorld.animalsArray[Int(newIndex)] = Orca()
-            if self.stepsToDeathNoEat == 0 {
-                _ = self.death(myWorld: myWorld, myIndex: myIndex)
-                return  [myIndex, newIndex]
-            } else {
-                return [newIndex]
+                return nil
             }
         }
     }
